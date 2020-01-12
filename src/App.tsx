@@ -7,7 +7,6 @@ import WrapperPage from './pages/WrapperPage';
 // import StaticBarChartPage from './pages/StaticBarChartPage';
 // import ScatterGraphPage from './pages/ScatterGraphPage';
 // import ColumnRangePage from './pages/ColumnRangePage';
-// import FileInputPage from './pages/FileInputPage';
 
 const App: React.FC = () => {
   return (

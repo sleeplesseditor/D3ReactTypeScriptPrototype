@@ -1,4 +1,4 @@
-import * as d3 from 'd3';
+import * as d3 from "d3";
 
 const url ='https://udemy-react-d3.firebaseio.com/ages.json';
 const width = 500;

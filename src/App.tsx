@@ -4,7 +4,7 @@ import Header from './components/Header/Header';
 import './App.scss';
 
 import WrapperPage from './pages/WrapperPage';
-// import StaticBarChartPage from './pages/StaticBarChartPage';
+import StaticBarChartPage from './pages/StaticBarChartPage';
 // import ScatterGraphPage from './pages/ScatterGraphPage';
 // import ColumnRangePage from './pages/ColumnRangePage';
 
@@ -14,6 +14,7 @@ const App: React.FC = () => {
       <Header />
         <Switch>
           <Route exact path="/" component={WrapperPage} />
+          <Route exact path="/bar-chart" component={StaticBarChartPage} />
         </Switch>
     </Router>
   );

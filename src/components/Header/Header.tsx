@@ -57,6 +57,13 @@ export default function Header() {
             >
                 Basic React Wrapper Example
             </Link>
+            <Link 
+                to={"/bar-chart"}
+                style={{ textDecoration: 'none' }}
+                onClick={toggleNav}
+            >
+                Updating Bar Chart Example
+            </Link>
         </nav>
       </CSSTransition>
       <button onClick={toggleNav} className="header-button">

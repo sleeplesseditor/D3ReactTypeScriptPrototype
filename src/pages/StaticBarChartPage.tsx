@@ -9,8 +9,6 @@ function StaticBarChartPage(): JSX.Element {
         { value: 'women', label: 'Women' },
     ];
 
-    console.log('GENDER', gender)
-
     return (
         <div className="App">
             <h2>Updating Bar Chart Wrapper</h2>

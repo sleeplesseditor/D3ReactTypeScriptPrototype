@@ -5,9 +5,19 @@ interface WrapperProps {
     gender: string;
 }
 
-class ChartWrapper extends Component <WrapperProps> {
+class ChartWrapper extends Component <WrapperProps, { chart: any }> {
     componentDidMount(){
-        new D3Chart(this.refs.chart);
+        this.setState({
+            chart: new D3Chart(this.refs.chart)
+        })
+    }
+
+    shouldComponentUpdate(){
+        return false;
+    }
+
+    componentWillReceiveProps(nextProps: WrapperProps){
+        this.state.chart.update(nextProps.gender)
     }
 
     render() {

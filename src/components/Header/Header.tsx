@@ -64,6 +64,13 @@ export default function Header() {
             >
                 Updating Bar Chart Example
             </Link>
+            <Link 
+                to={"/scatter-graph"}
+                style={{ textDecoration: 'none' }}
+                onClick={toggleNav}
+            >
+                Scatter Graph Example
+            </Link>
         </nav>
       </CSSTransition>
       <button onClick={toggleNav} className="header-button">

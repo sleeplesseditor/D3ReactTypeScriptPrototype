@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import D3Chart from './D3Chart/D3Chart';
 
 interface WrapperProps {
-    data: string[];
-    updateName: Function;
+    data?: string[];
+    updateName?: Function;
 }
 
 class ChartWrapper extends Component <WrapperProps, { chart: any }> {

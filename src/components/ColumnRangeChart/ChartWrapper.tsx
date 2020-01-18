@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import D3Chart from '../D3Chart/D3Chart';
+import D3ChartAlternate from './D3Chart/D3Chart';
+import './ChartWrapper.scss';
 
 interface WrapperProps {
-    gender?: string;
+    year?: string;
 }
 
 class ChartWrapper extends Component <WrapperProps, { chart: any }> {
     componentDidMount(){
         this.setState({
-            chart: new D3Chart(this.refs.chart)
+            chart: new D3ChartAlternate(this.refs.chart)
         })
     }
 
@@ -17,13 +18,12 @@ class ChartWrapper extends Component <WrapperProps, { chart: any }> {
     }
 
     componentWillReceiveProps(nextProps: WrapperProps){
-        this.state.chart.update(nextProps.gender)
+        this.state.chart.update(nextProps.year)
     }
 
     render() {
         return (
-            <div ref="chart">
-            </div>
+            <div ref="chart"></div>
         )
     }
 }

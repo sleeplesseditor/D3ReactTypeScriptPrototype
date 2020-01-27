@@ -18,6 +18,7 @@ export default class D3Chart {
     womenData!: Array<HeightData>;
     vis: any;
     data!: HeightData[];
+    
     constructor(element: any | Element) {
         const vis = this;
         vis.svg = d3.select(element)
@@ -42,7 +43,7 @@ export default class D3Chart {
         vis.xAxisGroup = vis.svg.append('g')
             .attr('transform', `translate(0, ${height})`)
 
-        vis.yAxisGroup =  vis.svg.append('g')
+        vis.yAxisGroup = vis.svg.append('g')
 
         Promise.all([
             d3.json('https://udemy-react-d3.firebaseio.com/tallest_men.json'),

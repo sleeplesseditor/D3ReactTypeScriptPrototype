@@ -5,12 +5,12 @@ export interface AgesData {
     name: string
 }
 
-const url ='https://udemy-react-d3.firebaseio.com/ages.json';
-const width = 500;
-const height = 200;
+const url: string ='https://udemy-react-d3.firebaseio.com/ages.json';
+const width: number = 500;
+const height: number = 200;
 
 export default class D3Chart {
-    constructor(element: any) {
+    constructor(element: any | Element) {
         const svg = d3.select(element)
             .append('svg')
                 .attr('width', width)

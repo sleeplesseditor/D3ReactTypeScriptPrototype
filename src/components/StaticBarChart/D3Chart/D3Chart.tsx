@@ -1,11 +1,24 @@
 import * as d3 from 'd3';
 
-const margin = { top: 10, bottom: 50, left: 70, right: 10 };
-const width = 800 - margin.left - margin.right;
-const height = 500 - margin.top - margin.bottom;
+const margin: any = { top: 10, bottom: 50, left: 70, right: 10 };
+const width: number = 800 - margin.left - margin.right;
+const height: number = 500 - margin.top - margin.bottom;
+
+export interface HeightData {
+    height: number,
+    name: string
+}
 
 export default class D3Chart {
-    constructor(element) {
+    svg: any; 
+    xAxisGroup: any;
+    yAxisGroup: any;
+    xLabel: any;
+    menData!: Array<HeightData>;
+    womenData!: Array<HeightData>;
+    vis: any;
+    data!: HeightData[];
+    constructor(element: any | Element) {
         const vis = this;
         vis.svg = d3.select(element)
             .append('svg')
@@ -41,20 +54,20 @@ export default class D3Chart {
         })
     }
 
-    update(gender) {
+    update(gender: string): void {
         const vis = this;
         vis.data = (gender === 'men') ? vis.menData : vis.womenData;
         vis.xLabel.text(`The world's tallest ${gender}`)
-        const y = d3.scaleLinear()
+        const y = d3.scaleLinear<number>()
             .domain([
-                d3.min(vis.data, d => d.height) * 0.95, 
-                d3.max(vis.data, d => d.height)
+                d3.min(vis.data, (d: any) => d.height) * 0.95, 
+                d3.max(vis.data, (d: any) => d.height)
             ])
             .range([height, 0])
             console.log(vis.data);
 
-        const x = d3.scaleBand()
-            .domain(vis.data.map(d => d.name))
+        const x = d3.scaleBand<string>()
+            .domain(vis.data.map((d: HeightData) => d.name))
             .range([0, width])
             .padding(0.4)
 
@@ -70,7 +83,7 @@ export default class D3Chart {
 
         // DATA JOIN
         const rects = vis.svg.selectAll('rect')
-        .data(vis.data)
+            .data(vis.data)
 
         // EXIT
         rects.exit()
@@ -81,22 +94,21 @@ export default class D3Chart {
 
         // UPDATE
         rects.transition().duration(500)
-            .attr('x', d => x(d.name))
-            .attr('y', d => y(d.height))
+            .attr('x', (d: HeightData) => x(d.name))
+            .attr('y', (d: HeightData) => y(d.height))
             .attr('width', x.bandwidth)
-            .attr('height', d => height - y(d.height))
+            .attr('height', (d: HeightData) => height - y(d.height))
 
         // ENTER
         rects.enter().append('rect')
-            .attr('x', d => x(d.name))
+            .attr('x', (d: HeightData) => x(d.name))
             .attr('width', x.bandwidth)
             .attr('fill', '#259CD0')
             .attr('y', height)
             .transition().duration(500)
-                .attr('height', d => height - y(d.height))
-                .attr('y', d => y(d.height))
+                .attr('height', (d: HeightData) => height - y(d.height))
+                .attr('y', (d: HeightData) => y(d.height))
 
             console.log(rects);
-
     }
 }
